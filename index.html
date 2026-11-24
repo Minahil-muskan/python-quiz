@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Computer Science: Introduction to Python Programming MCQs</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#1d2433;--muted:#5d6678;--line:#d9deea;--accent:#2f5bea;--ok:#157a3d;--okbg:#e3f6ea;--bad:#b3261e;--badbg:#fde8e6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151c;--card:#1b202b;--text:#e8ebf3;--muted:#9aa3b5;--line:#2c3342;--accent:#7b9bff;--ok:#6fdc97;--okbg:#17301f;--bad:#ff8f87;--badbg:#3a1c1a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151c;--card:#1b202b;--text:#e8ebf3;--muted:#9aa3b5;--line:#2c3342;--accent:#7b9bff;--ok:#6fdc97;--okbg:#17301f;--bad:#ff8f87;--badbg:#3a1c1a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:1.35rem;margin:8px 0 4px}
+.sub{color:var(--muted);margin:0 0 16px;font-size:.95rem}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.q p{margin:0 0 10px;font-weight:600}
+label{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;cursor:pointer}
+label:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+input{margin-right:8px}
+label.ok{border-color:var(--ok);background:var(--okbg)}
+label.bad{border-color:var(--bad);background:var(--badbg)}
+button{width:100%;padding:14px;font-size:1.05rem;font-weight:600;border:0;border-radius:10px;background:var(--accent);color:#fff;cursor:pointer;margin:8px 0}
+#res{display:none;background:var(--card);border:2px solid var(--accent);border-radius:12px;padding:16px;text-align:center;margin-bottom:16px}
+#res .big{font-size:2rem;font-weight:700}
+.warn{color:var(--bad);text-align:center;min-height:1.5em;margin:0}
+</style>
+</head>
+<body>
+<main>
+<h1>Computer Science: Introduction to Python Programming (Chapter 3) MCQs</h1>
+<p class="sub">20 multiple-choice questions. Select the one correct option for each question, then click Submit at the end.</p>
+<div id="res" role="status"></div>
+<div id="quiz"></div>
+<p class="warn" id="warn"></p>
+<button id="sub">Submit</button>
+</main>
+<script>
+var Q=[
+["Python is best described as a:",["Low-level language used only for hardware","High-level programming language known for simplicity and readability","Database management system","Type of operating system"],1],
+["Computer programming is the process of:",["Repairing computer hardware","Creating a set of instructions that tell a computer how to perform a task","Designing computer cases","Connecting computers to the internet"],1],
+["During Python installation, which option should be checked to run Python easily from the command line?",["Install for all users only","Add Python to PATH","Create desktop shortcut","Disable length limit"],1],
+["Which of the following IDEs is included with Python?",["PyCharm","VS Code","IDLE","Jupyter Server"],2],
+["Google Colab is:",["A paid desktop IDE","A free cloud-based platform providing a Jupyter notebook environment","A Python library for graphics","A type of Python variable"],1],
+["Which symbol is used to write a single-line comment in Python?",["//","#","/*","--"],1],
+["In programming, a variable functions as a:",["Fixed constant that never changes","Storage container in a computer’s memory","Type of operator","Syntax error"],1],
+["Which of the following is a valid variable name in Python?",["2score","my-score","_score","for"],2],
+["In Python, the variables “age” and “Age” are:",["The same variable","Two different variables, because Python is case-sensitive","Invalid names","Reserved keywords"],1],
+["Which of the following cannot be used as a variable name because it is a reserved keyword?",["total","name1","while","price"],2],
+["Which data type is used to store text, such as name = \"Ali\"?",["int","float","bool","str"],3],
+["What is the data type of the value in is_student = True?",["str","bool","int","float"],1],
+["What does the input() function return by default?",["An integer","A float","A string","A Boolean"],2],
+["Which function is used to convert the user’s input into an integer?",["str()","int()","print()","type()"],1],
+["What is the output of print(10 // 3)?",["3.33","3","1","30"],1],
+["What is the output of print(10 % 3)?",["3","0","1","3.33"],2],
+["Which operator is used to check whether two values are NOT equal?",["==","=!","!=","<>"],2],
+["Which of the following is the set of logical operators in Python?",["+, -, *","and, or, not","<, >, ==","+=, -=, *="],1],
+["What is the result of the expression True and False?",["True","False","None","Error"],1],
+["Which has the highest precedence in a Python expression?",["Addition","Multiplication","Parentheses ( )","Subtraction"],2]
+];
+var L=["A","B","C","D"],quiz=document.getElementById("quiz"),KEY="python_ch3_quiz_attempt_v1";
+Q.forEach(function(q,i){var d=document.createElement("div");d.className="q";var h="<p>"+(i+1)+". "+q[0]+"</p>";q[1].forEach(function(o,j){h+='<label><input type="radio" name="q'+i+'" value="'+j+'">'+L[j]+") "+o+"</label>"});d.innerHTML=h;quiz.appendChild(d)});
+function showResult(ans,again){
+var s=0,wrong=[];
+Q.forEach(function(q,i){document.querySelectorAll('input[name="q'+i+'"]').forEach(function(r,j){r.disabled=true;if(ans[i]===j)r.checked=true;var l=r.parentNode;if(j===q[2])l.classList.add("ok");else if(j===ans[i])l.classList.add("bad")});
+if(ans[i]===q[2])s++;else wrong.push(i+1)});
+var p=Math.round(s*100/Q.length),r=document.getElementById("res");
+var info=wrong.length?"Incorrect answers (marked in red): Q"+wrong.join(", Q")+". The correct options are shown in green.":"All answers are correct. Excellent work!";
+r.style.display="block";r.innerHTML=(again?'<div style="color:var(--muted);font-size:.9rem;margin-bottom:6px">You have already completed this quiz. Only one attempt is allowed.</div>':"")+'<div>Your Result</div><div class="big">'+s+" / "+Q.length+"</div><div>Score: "+p+"%</div><div style=\"margin-top:8px;font-size:.95rem\">"+info+"</div>";
+document.getElementById("sub").style.display="none";document.getElementById("warn").textContent="";
+}
+document.getElementById("sub").onclick=function(){
+var ans=[],miss=[];
+Q.forEach(function(q,i){var c=document.querySelector('input[name="q'+i+'"]:checked');if(!c)miss.push(i+1);ans.push(c?+c.value:-1)});
+if(miss.length){document.getElementById("warn").textContent="Please answer all questions. Unanswered: Q"+miss.join(", Q");return}
+try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}
+showResult(ans,false);window.scrollTo({top:0,behavior:"smooth"})};
+try{var saved=localStorage.getItem(KEY);if(saved){var a=JSON.parse(saved);if(Array.isArray(a)&&a.length===Q.length)showResult(a,true)}}catch(e){}
+</script>
+</body>
+</html>
